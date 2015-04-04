@@ -1,0 +1,29 @@
+<form style="" ng-controller="phoneDetailController as phoneDetail" id="FORM ASDF">
+  <a href="phones.html" class="font-boostneo-bold-hover">&lt;&lt; Return to shop phones</a><br/>
+  <table>
+    <tr>
+      <td style="width:0;vertical-align:top;">
+        <img style="padding-top:20px;cursor:pointer;" src="resource/{{phoneDetail.data.assetId.$}}/small/left.png" ng-click="phoneDetail.curImage='left'"/>
+        <img style="padding-top:5px;cursor:pointer;" ng-src="resource/{{phoneDetail.data.assetId.$}}/small/back.png" ng-click="phoneDetail.curImage='back'"/>
+        <img style="padding-top:5px;cursor:pointer;" src="resource/{{phoneDetail.data.assetId.$}}/small/front.png" ng-click="phoneDetail.curImage='front'"/>
+        <img style="padding-top:5px;cursor:pointer;" src="resource/{{phoneDetail.data.assetId.$}}/small/side.png" ng-click="phoneDetail.curImage='side'"/>
+      </td>
+      <td style="text-align:center;max-width:400px">
+        <img src="resource/{{phoneDetail.data.assetId.$}}/large/{{phoneDetail.curImage}}.png" style="max-height:400px"/>
+      </td>
+      <td style="vertical-align:top">
+        <div style="float:left;padding-left:50px">
+          <div style="color:blue;font-size:30px;padding:10px">{{phoneDetail.data.phoneName.$}}</div>
+          <p>  {{phoneDetail.data.shortDescription.$}} </p>
+          <lh/>
+          <div>
+            <div style="margin:20px;float:right">
+            <span style="padding-right:20px;color:red;font-size:20px">{{phoneDetail.data.phoneVariantsDefault.price.$ | currency}}</span>
+            <a class="btn btn-primary" type="submit" ng-click="phoneDetail.addToCart()">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+</form>

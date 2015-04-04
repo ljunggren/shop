@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html ng-app="appSprint">
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Alex Schemagin">
+	<link rel="author" content="ealsche">
+	<meta name="description" content="Sprint Mobile Shop">
+	<meta name="keywords" content="Sprint Mobile, homepage, shop home, responsive, shop, reboost, prepaid, scalable">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<link rel="shortcut icon" href="favicon.png">
+	<title>Sprint Mobile Shop - Phones</title>
+	<link rel="stylesheet" href="css/sprintprepaid-bootstrap.min.css"/>
+
+	<script src="js/lib/jquery.js"></script>
+	<script src="js/lib/bootstrap.min.js"></script>
+	<script src="js/lib/bootstrap.min.js"></script>
+	<script src="js/lib/angular.min.js"></script>
+  
+	<script src="js/jquery.cbFlyout.js"></script>
+	<script src="js/jquery.SprintShop.js"></script>
+	<script src="js/data2.json"></script>
+  
+  <script type="text/javascript" src="js/common/util.js"></script>
+  <script type="text/javascript" src="js/common/components.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/app_directives.js"></script>
+</head>
+<body ng-controller="appController as app">
+<div id="SprintShop">
+	<div class="layout-left-flyout" id="left-flyout-nav"></div>
+	<div class="layout-right-content">
+    <app-head></app-head>
+		<div class="container">
+			<div class="col-md-12 banner">
+				<div class="col-md-12 banner-2"></div>
+			</div><!--/12-->
+			<div class="col-md-12 reasonstochoose">
+				<ul><li>Unlimited Data Options</li><li>Award-winning Customer Service</li><li>Hottest Devices</li><li>Free Shipping</li></ul>
+			</div><!--/12-->
+			<div class="col-md-12 main">
+				<div class="col-md-2 filter">
+					<div class="panel-body filter">
+						<h4>Filter Phones</h4>
+						<label><input type="checkbox" name="checkbox" value="value" id="filterViewAll" onclick="updatePhoneFilter(this.id)" checked>Viewing All Results</input></label>
+						<label><input type="checkbox" name="checkbox" value="value" id="filterOnSale" onclick="updatePhoneFilter(this.id)">On Sale</input></label>
+					</div>
+					<div class="panel-group filter" id="accordion">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Condition</a></h4>
+							</div>
+							<div id="collapse1" class="panel-collapse collapse in">
+								<div class="panel-body">
+									<label><input type="checkbox" name="checkbox" value="value" id="filterNew" onclick="updatePhoneFilter(this.id);">New</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterPreOwned" onclick="updatePhoneFilter(this.id);">Pre-Owned</input></label>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Phone Types</a></h4>
+							</div>
+							<div id="collapse2" class="panel-collapse collapse">
+								<div class="panel-body">
+									<label><input type="checkbox" name="checkbox" value="value" id="filterTypeAndroid" onclick="updatePhoneFilter(this.id);">Android</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterTypeIphone" onclick="updatePhoneFilter(this.id);">iPhone</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterTypeWindows" onclick="updatePhoneFilter(this.id);">Windows</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterTypeBasic" onclick="updatePhoneFilter(this.id);">Basic</input></label>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Customer Rating</a></h4>
+							</div>
+							<div id="collapse3" class="panel-collapse collapse">
+								<div class="panel-body rating">
+									<label><input type="checkbox" name="checkbox" value="value" id="filterFourStar" onclick="updatePhoneFilter(this.id);">&#9733; &#9733; &#9733; &#9733; &amp; Up</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterThreeStar" onclick="updatePhoneFilter(this.id);">&#9733; &#9733; &#9733; &amp; Up</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterTwoStar" onclick="updatePhoneFilter(this.id);">&#9733; &#9733; &amp; Up</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterOneStar" onclick="updatePhoneFilter(this.id);">&#9733; &amp; Up</input></label>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse4">Brands</a></h4>
+							</div>
+							<div id="collapse4" class="panel-collapse collapse">
+								<div class="panel-body">
+									<label><input type="checkbox" name="checkbox" value="value" id="filterBrandAlcatel" onclick="updatePhoneFilter(this.id);">Alcatel</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterBrandApple" onclick="updatePhoneFilter(this.id);">Apple</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterBrandLG" onclick="updatePhoneFilter(this.id);">LG</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterBrandHTC" onclick="updatePhoneFilter(this.id);">HTC</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterBrandKyocera" onclick="updatePhoneFilter(this.id);">Kyocera</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterBrandMotorola" onclick="updatePhoneFilter(this.id);">Motorola</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterBrandMicrosoft" onclick="updatePhoneFilter(this.id);">Microsoft</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterBrandNokia" onclick="updatePhoneFilter(this.id);">Nokia</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterBrandSamsung" onclick="updatePhoneFilter(this.id);">Samsung</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterBrandSharp" onclick="updatePhoneFilter(this.id);">Sharp</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterBrandZTE" onclick="updatePhoneFilter(this.id);">ZTE</input></label>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse5">Features</a></h4>
+							</div>
+							<div id="collapse5" class="panel-collapse collapse">
+								<div class="panel-body">
+									<label><input type="checkbox" name="checkbox" value="value" id="filterFeatureTouchscreen" onclick="updatePhoneFilter(this.id);">Touchscreen</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterFeatureQwerty" onclick="updatePhoneFilter(this.id);">QWERTRY Keyboard</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterFeatureCamera" onclick="updatePhoneFilter(this.id);">Camera</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterFeatureFrontCamera" onclick="updatePhoneFilter(this.id);">Front-facing Camera</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterFeatureGPS" onclick="updatePhoneFilter(this.id);">GPS/Navigation</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterFeatureMusic" onclick="updatePhoneFilter(this.id);">Music</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterFeatureWifi" onclick="updatePhoneFilter(this.id);">Wi-Fi</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterFeatureBluetooth" onclick="updatePhoneFilter(this.id);">Bluetooth</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterFeatureSpeakerphone" onclick="updatePhoneFilter(this.id);">Speakerphone</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterFeature4G" onclick="updatePhoneFilter(this.id);">4G LTE</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterFeatureTextMsg" onclick="updatePhoneFilter(this.id);">Text Messaging</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterFeatureVideo" onclick="updatePhoneFilter(this.id);">Video</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterFeatureHotspot" onclick="updatePhoneFilter(this.id);">Hotspot</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterFeatureHtmlBrowser" onclick="updatePhoneFilter(this.id);">HTML Browser</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterFeatureULE" onclick="updatePhoneFilter(this.id);">ULE Certified</input></label>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse6">Phone Styles</a></h4>
+							</div>
+							<div id="collapse6" class="panel-collapse collapse">
+								<div class="panel-body">
+									<label><input type="checkbox" name="checkbox" value="value" id="filterStyleBar" onclick="updatePhoneFilter(this.id);">Bar</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterStyleSlider" onclick="updatePhoneFilter(this.id);">Slider</input></label>
+									<label><input type="checkbox" name="checkbox" value="value" id="filterStyleFlip" onclick="updatePhoneFilter(this.id);">Flip</input></label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="notice">
+						<h4>Best Value in Wireless</h4>
+						<p>Unlimited data options and innovative ways to score the latest devices</p>
+					</div>
+				</div>
+				<div class="col-md-10">
+					<div class="col-md-12 sortby">
+						<div class="notice">
+							<p>The Best Value in Wireless.<span>More of what you want from Sprint.</span></p>
+						</div>
+						<div class="sortby">
+							<div class="dropdown">
+								<select class="btn btn-default sortby">
+									<option selected>Featured</option>
+									<option>Newest to Oldest</option>
+									<option>Price: Low to High</option>
+									<option>Price: High to Low</option>
+									<option>Rating: Highest to Lowest</option>
+									<option>Alphabetically</option>
+								</select>
+							</div>
+							<p id="results"><span>0</span> of <span>0</span> available phones match your search</p>
+						</div>
+					</div>
+<form class="add-to-cart" id="FORM ASDF">
+<p id="populatePhones"></p>
+</form>
+					<div class="col-md-6 phone" id="seeallphones">
+						<a href="">
+							<h1>See All Phones</h1>
+						</a>
+					</div>
+				</div>
+			</div><!--/12-->
+			<div class="col-md-12 legal">
+				<p>*Final payment varies; details on individual phone page.</p>
+				<p>Sprint Easy Pay option: Pricing for well-qualified buyer. Req. Installment agmt, 0% APR &amp; qualifying service plan. Credit check req. Other customers may qualify for different down payment & monthly payment terms. Other monthly charges apply. Unlimited features while on the Sprint network.</p>
+				<p>Important information about features that may be included in your plan: **Monthly charges exclude taxes &amp; Sprint Surcharges [incl. USF charge of up to 16.80% (varies quarterly), up to $2.50 Admin. &amp; .40 Reg. /line/mo. &amp; fees by area (approx. 5-20%)]. Surcharges are not taxes. See sprint.com/taxesandfees. May require up to a $36 activation fee/line, credit approval, deposit. Up to $350/line early termination fee (ETF) for Advanced Devices &amp; up to $200 ETF/line for other devices applies (no ETF for Agreements cancelled in compliance with Sprint's Return Policy).</p>
+				<p>All offers are for a limited time.</p>
+				<p>Activ. Fee: $36/line. Credit approval required. $60 Unlimited Plan: Includes unlimited domestic Long Distance calling, texting and data. Third-party content/downloads are add’l charge. Int’l svcs are not included. Pricing may vary for existing customers. Excludes discounted phones. Plan will appear on your bill as $30/Unltd Talk &amp; Text and $30/Unlimited Data. Includes unlimited on-network data. Customers under a 1 or 2 year Service Agreement and moving to the Sprint $60 Unlimited plan have a higher monthly rate of up to $25/month until they reach upgrade eligibility. Early Upgrade for Easy Pay: Req. active add-on thru time of upgrade with min. 12 consecutive payments of both the add-on and an installment agreement for phones, new phone Installment Agreement, acct. in good standing, &amp; give back of current eligible device in good &amp; functional condition. After upgrade, remaining unbilled installment payments for giveback device are waived. Requires enrollment within 30 days of new activation or upgrade on eligible phone. Usage Limitations: Other plans may receive prioritized bandwidth availability. To improve data experience for the majority of users, throughput may be limited, varied or reduced on the network. Sprint may terminate service if off-network roaming usage in a month exceeds: (1) 800 min. or a majority of min.; or (2) 100MB or a majority of KB. Prohibited network use rules apply - see sprint.com/termsandconditions. Other Terms: Offers and coverage not available everywhere or for all phones/networks. No discounts apply to $30/talk and text portion of plan or $5 Early Upgrade option. May not be combined with other offers. There is no minimum term applied based on the $60 Unlimited plan, but the Service Agreement applies and automatically continues on a month-to-month basis unless you contact us to inform us of any changes, including cancellation. There may be a minimum annual term applied or continued based on a discounted device purchase or other offer. Restrictions apply. See store or sprint.com for details. The Nationwide Sprint Network reaches over 281 million people. Sprint 3G network reaches over 281 million people. Sprint 4G LTE network reaches over 225 million people. See sprint.com/coverage. © 2015 Sprint. All rights reserved.</p>
+				<p>No credit check devices: Not eligible for the Sprint Discount Program. Account balance may not exceed $150/line at any time or the account and all services will be suspended completely until account balance is paid in full. Not combinable with offers that req. credit approval and may not be combinable with other offers.</p>
+			</div><!--/12-->
+		</div><!--/12-->
+    <app-footer></app-footer>
+
+	</div>	
+	<script>
+		//function notEmpty(){
+			// NEED TO FIX THIS LATER
+			//var e = document.getElementById("varPrice");
+			//var sizeOption = e.options[e.selectedIndex].value;
+			//document.getElementById('listedPrice').innerHTML = sizeOption;
+		//}
+		//notEmpty()
+		//	document.getElementById("varPrice").onchange = notEmpty;
+	</script>
+
+</div>
+</body>
+</html>
